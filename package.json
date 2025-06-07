@@ -28,6 +28,8 @@
     "security": "npm audit --audit-level=moderate",
     "security:production": "npm audit --omit=dev --audit-level=moderate || echo 'Security audit completed with warnings - build tools vulnerabilities detected but do not affect production runtime'",
     "security:check": "npm audit --audit-level=high --omit=dev || echo 'High severity vulnerabilities detected in build tools only'",
+    "security:lint": "eslint src --ext .js,.jsx,.ts,.tsx --config .eslintrc.json",
+    "security:full": "npm run security:lint && npm run security:production",
     "quality": "npm run lint && npm run format:check",
     "prebuild": "npm run quality && npm run security:check"
   },
@@ -51,6 +53,7 @@
     "@types/react-dom": "^19.1.6",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
+    "eslint-plugin-security": "^3.0.1",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
