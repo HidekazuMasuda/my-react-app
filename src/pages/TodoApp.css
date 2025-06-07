@@ -229,6 +229,19 @@
   font-style: italic;
 }
 
+.error-message {
+  font-size: 0.8rem;
+  color: #dc3545;
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+.date-input.error,
+.todo-date-edit-input.error {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2) !important;
+}
+
 .todo-item.completed .todo-text {
   text-decoration: line-through;
   color: #6c757d;

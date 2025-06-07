@@ -2,44 +2,89 @@ import { useState, useEffect } from 'react';
 import './TodoApp.css';
 
 function TodoApp() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    // localStorage からデータを読み込む（初期化時のみ）
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      try {
+        const parsedTodos = JSON.parse(savedTodos);
+        return parsedTodos;
+      } catch (error) {
+        console.error('Failed to parse todos from localStorage:', error);
+        return [];
+      }
+    }
+    return [];
+  });
   const [inputValue, setInputValue] = useState('');
   const [dueDateValue, setDueDateValue] = useState('');
   const [isManualDate, setIsManualDate] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
   const [isClearing, setIsClearing] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState('');
   const [editingDateId, setEditingDateId] = useState(null);
   const [editingDate, setEditingDate] = useState('');
+  const [dateError, setDateError] = useState('');
+  const [editDateError, setEditDateError] = useState('');
 
-  // localStorage からデータを読み込む
-  useEffect(() => {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      try {
-        const parsedTodos = JSON.parse(savedTodos);
-        setTodos(parsedTodos);
-      } catch (error) {
-        console.error('Failed to parse todos from localStorage:', error);
-        setTodos([]);
-      }
-    } else {
-      setTodos([]);
+  // localStorageに保存するヘルパー関数
+  const saveTodosToLocalStorage = (todosToSave) => {
+    if (!isClearing) {
+      localStorage.setItem('todos', JSON.stringify(todosToSave));
     }
-    setIsInitialized(true);
-  }, []);
+  };
 
-  // todosが変更されたらlocalStorageに保存（初期化後のみ、クリア中は除く）
-  useEffect(() => {
-    if (isInitialized && !isClearing) {
-      localStorage.setItem('todos', JSON.stringify(todos));
+  // 日付バリデーション関数
+  const validateDate = (dateString) => {
+    if (!dateString.trim()) {
+      return { isValid: true, error: '' }; // 空の場合は有効（期限なしとして扱う）
     }
-  }, [todos, isInitialized, isClearing]);
+
+    // YYYY-MM-DD形式の正規表現チェック
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(dateString)) {
+      return { isValid: false, error: 'YYYY-MM-DD形式で入力してください' };
+    }
+
+    // 実際の日付として有効かチェック
+    const date = new Date(dateString);
+    const parts = dateString.split('-');
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10);
+    const day = parseInt(parts[2], 10);
+
+    // Dateオブジェクトが正しく構築され、入力値と一致するかチェック
+    if (date.getFullYear() !== year || 
+        date.getMonth() + 1 !== month || 
+        date.getDate() !== day) {
+      return { isValid: false, error: '存在しない日付です' };
+    }
+
+    // 過去日チェック（今日より前の日付は無効）
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // 時間をリセットして日付のみで比較
+    date.setHours(0, 0, 0, 0);
+    
+    if (date < today) {
+      return { isValid: false, error: '過去の日付は設定できません' };
+    }
+
+    return { isValid: true, error: '' };
+  };
 
   const addTodo = () => {
     if (inputValue.trim() !== '') {
-      setTodos([
+      // 手動入力の場合のみバリデーション
+      if (isManualDate && dueDateValue) {
+        const validation = validateDate(dueDateValue);
+        if (!validation.isValid) {
+          setDateError(validation.error);
+          return;
+        }
+      }
+      
+      setDateError(''); // エラーをクリア
+      const newTodos = [
         ...todos,
         {
           id: Date.now(),
@@ -47,20 +92,26 @@ function TodoApp() {
           completed: false,
           dueDate: dueDateValue || null
         }
-      ]);
+      ];
+      setTodos(newTodos);
+      saveTodosToLocalStorage(newTodos);
       setInputValue('');
       setDueDateValue('');
     }
   };
 
   const toggleTodo = (id) => {
-    setTodos(todos.map(todo =>
+    const newTodos = todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    );
+    setTodos(newTodos);
+    saveTodosToLocalStorage(newTodos);
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    const newTodos = todos.filter(todo => todo.id !== id);
+    setTodos(newTodos);
+    saveTodosToLocalStorage(newTodos);
   };
 
   const startEditing = (id, text) => {
@@ -70,9 +121,11 @@ function TodoApp() {
 
   const saveEdit = (id) => {
     if (editingText.trim() !== '') {
-      setTodos(todos.map(todo =>
+      const newTodos = todos.map(todo =>
         todo.id === id ? { ...todo, text: editingText.trim() } : todo
-      ));
+      );
+      setTodos(newTodos);
+      saveTodosToLocalStorage(newTodos);
     }
     setEditingId(null);
     setEditingText('');
@@ -97,9 +150,21 @@ function TodoApp() {
   };
 
   const saveDateEdit = (id) => {
-    setTodos(todos.map(todo =>
+    // 日付バリデーション
+    if (editingDate) {
+      const validation = validateDate(editingDate);
+      if (!validation.isValid) {
+        setEditDateError(validation.error);
+        return;
+      }
+    }
+    
+    setEditDateError(''); // エラーをクリア
+    const newTodos = todos.map(todo =>
       todo.id === id ? { ...todo, dueDate: editingDate || null } : todo
-    ));
+    );
+    setTodos(newTodos);
+    saveTodosToLocalStorage(newTodos);
     setEditingDateId(null);
     setEditingDate('');
   };
@@ -107,6 +172,7 @@ function TodoApp() {
   const cancelDateEdit = () => {
     setEditingDateId(null);
     setEditingDate('');
+    setEditDateError(''); // エラーもクリア
   };
 
   const handleDateEditKeyDown = (e, id) => {
@@ -120,6 +186,20 @@ function TodoApp() {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && e.target.className === 'todo-input') {
       addTodo();
+    }
+  };
+
+  const handleDateValueChange = (value) => {
+    setDueDateValue(value);
+    if (dateError) {
+      setDateError(''); // 入力時にエラーをクリア
+    }
+  };
+
+  const handleEditDateChange = (value) => {
+    setEditingDate(value);
+    if (editDateError) {
+      setEditDateError(''); // 入力時にエラーをクリア
     }
   };
 
@@ -199,18 +279,21 @@ function TodoApp() {
             </div>
             
             {isManualDate ? (
-              <input
-                type="text"
-                value={dueDateValue}
-                onChange={(e) => setDueDateValue(e.target.value)}
-                placeholder="YYYY-MM-DD 形式で入力"
-                className="date-input manual"
-              />
+              <>
+                <input
+                  type="text"
+                  value={dueDateValue}
+                  onChange={(e) => handleDateValueChange(e.target.value)}
+                  placeholder="YYYY-MM-DD 形式で入力"
+                  className={`date-input manual ${dateError ? 'error' : ''}`}
+                />
+                {dateError && <span className="error-message">{dateError}</span>}
+              </>
             ) : (
               <input
                 type="date"
                 value={dueDateValue}
-                onChange={(e) => setDueDateValue(e.target.value)}
+                onChange={(e) => handleDateValueChange(e.target.value)}
                 className="date-input calendar"
               />
             )}
@@ -252,15 +335,17 @@ function TodoApp() {
                   {editingDateId === todo.id ? (
                     <div className="todo-date-edit">
                       <input
-                        type="date"
+                        type="text"
                         value={editingDate}
-                        onChange={(e) => setEditingDate(e.target.value)}
+                        onChange={(e) => handleEditDateChange(e.target.value)}
                         onKeyDown={(e) => handleDateEditKeyDown(e, todo.id)}
                         onBlur={() => saveDateEdit(todo.id)}
-                        className="todo-date-edit-input"
+                        className={`todo-date-edit-input ${editDateError ? 'error' : ''}`}
+                        placeholder="YYYY-MM-DD 形式で入力"
                         autoFocus
                       />
                       <span className="edit-hint">Enter: 保存 | Esc: キャンセル | 空: 削除</span>
+                      {editDateError && <span className="error-message">{editDateError}</span>}
                     </div>
                   ) : (
                     <>
