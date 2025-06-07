@@ -31,7 +31,9 @@
     "security:lint": "eslint src --ext .js,.jsx,.ts,.tsx --config .eslintrc.json",
     "security:full": "npm run security:lint && npm run security:production",
     "quality": "npm run lint && npm run format:check",
-    "prebuild": "npm run quality && npm run security:check"
+    "prebuild": "npm run quality && npm run security:check",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "browserslist": {
     "production": [
@@ -47,6 +49,12 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^9.0.6",
+    "@storybook/react-webpack5": "^8.6.14",
+    "@storybook/test": "^8.6.14",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.30",
     "@types/react": "^19.1.6",
@@ -55,6 +63,7 @@
     "eslint-plugin-prettier": "^5.4.1",
     "eslint-plugin-security": "^3.0.1",
     "prettier": "^3.5.3",
+    "storybook": "^8.6.14",
     "typescript": "^5.8.3"
   }
 }

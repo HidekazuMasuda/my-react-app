@@ -1,0 +1,115 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.todo-item:hover {
+  background-color: #f8f9fa;
+}
+
+.todo-item--completed {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.todo-item--overdue {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.todo-item--due-today {
+  background-color: #fff3cd;
+  border-color: #ffeaa7;
+}
+
+.todo-item__checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.todo-item__text {
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.2rem 0;
+}
+
+.todo-item--completed .todo-item__text {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.todo-item__edit-input {
+  flex: 1;
+}
+
+.todo-item__due-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-style: italic;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.todo-item__due-date:hover {
+  color: #3498db;
+}
+
+.todo-item--overdue .todo-item__due-date {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.todo-item--due-today .todo-item__due-date {
+  color: #f39c12;
+  font-weight: 500;
+}
+
+.todo-item__add-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.todo-item__add-date:hover {
+  color: #3498db;
+}
+
+.todo-item__date-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.todo-item__date-edit-input {
+  font-size: 0.8rem;
+}
+
+.todo-item__edit-hint {
+  font-size: 0.7rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.todo-item__delete-button {
+  flex-shrink: 0;
+}
