@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './TodoApp.css';
 
 function TodoApp() {
@@ -6,6 +6,27 @@ function TodoApp() {
   const [inputValue, setInputValue] = useState('');
   const [dueDateValue, setDueDateValue] = useState('');
   const [isManualDate, setIsManualDate] = useState(false);
+
+  // localStorage からデータを読み込む
+  useEffect(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      try {
+        setTodos(JSON.parse(savedTodos));
+      } catch (error) {
+        console.error('Failed to parse todos from localStorage:', error);
+      }
+    }
+  }, []);
+
+  // todosが変更されたらlocalStorageに保存（初期状態は除く）
+  useEffect(() => {
+    const savedTodos = localStorage.getItem('todos');
+    // 初期状態（空配列）かつlocalStorageにデータがない場合は保存しない
+    if (todos.length > 0 || savedTodos) {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
+  }, [todos]);
 
   const addTodo = () => {
     if (inputValue.trim() !== '') {
@@ -65,6 +86,17 @@ function TodoApp() {
     today.setHours(0, 0, 0, 0);
     due.setHours(0, 0, 0, 0);
     return due.getTime() === today.getTime();
+  };
+
+  const clearAllData = () => {
+    const confirmClear = window.confirm(
+      'すべてのTODOデータを削除します。この操作は元に戻せません。よろしいですか？'
+    );
+    
+    if (confirmClear) {
+      localStorage.removeItem('todos');
+      setTodos([]);
+    }
   };
 
   return (
@@ -157,6 +189,9 @@ function TodoApp() {
             完了: {todos.filter(todo => todo.completed).length} | 
             未完了: {todos.filter(todo => !todo.completed).length}
           </p>
+          <button onClick={clearAllData} className="clear-data-button">
+            すべてのデータを削除
+          </button>
         </div>
       </div>
     </div>
