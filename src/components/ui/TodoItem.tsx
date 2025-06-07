@@ -87,9 +87,9 @@ const TodoItem: React.FC<TodoItemProps> = ({
 
   const itemClasses = [
     'todo-item',
-    todo.completed ? 'todo-item--completed' : '',
-    isOverdue(todo.dueDate) && !todo.completed ? 'todo-item--overdue' : '',
-    isDueToday(todo.dueDate) && !todo.completed ? 'todo-item--due-today' : '',
+    todo.completed ? 'todo-item--completed completed' : '',
+    isOverdue(todo.dueDate) && !todo.completed ? 'todo-item--overdue overdue' : '',
+    isDueToday(todo.dueDate) && !todo.completed ? 'todo-item--due-today due-today' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -100,7 +100,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
         type="checkbox"
         checked={todo.completed}
         onChange={() => onToggle(todo.id)}
-        className="todo-item__checkbox"
+        className="todo-item__checkbox todo-checkbox"
       />
       
       <div className="todo-item__content">
@@ -110,12 +110,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
             onChange={(e) => onEditingTextChange?.(e.target.value)}
             onKeyDown={handleTextEditKeyDown}
             onBlur={() => onEditText(todo.id, editingText.trim())}
-            className="todo-item__edit-input"
+            className="todo-item__edit-input todo-edit-input"
             autoFocus
           />
         ) : (
           <span
-            className="todo-item__text"
+            className="todo-item__text todo-text"
             onClick={() => onStartEditingText(todo.id, todo.text)}
           >
             {todo.text}
@@ -130,7 +130,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
               onKeyDown={handleDateEditKeyDown}
               onBlur={() => onEditDate(todo.id, editingDate || null)}
               placeholder="YYYY-MM-DD 形式で入力"
-              className="todo-item__date-edit-input"
+              className="todo-item__date-edit-input todo-date-edit-input"
               error={editDateError}
               autoFocus
             />
@@ -142,14 +142,14 @@ const TodoItem: React.FC<TodoItemProps> = ({
           <>
             {todo.dueDate ? (
               <span
-                className="todo-item__due-date"
+                className="todo-item__due-date todo-due-date"
                 onClick={() => onStartEditingDate(todo.id, todo.dueDate)}
               >
                 期限: {formatDate(todo.dueDate)}
               </span>
             ) : (
               <span
-                className="todo-item__add-date"
+                className="todo-item__add-date todo-add-date"
                 onClick={() => onStartEditingDate(todo.id, '')}
               >
                 期限を追加
@@ -163,7 +163,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
         variant="danger"
         size="small"
         onClick={() => onDelete(todo.id)}
-        className="todo-item__delete-button"
+        className="todo-item__delete-button delete-button"
       >
         削除
       </Button>

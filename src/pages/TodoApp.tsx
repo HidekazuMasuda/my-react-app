@@ -1,5 +1,6 @@
 import React, { useState, KeyboardEvent, ChangeEvent } from 'react';
 import { Todo, ValidationResult } from '../types/todo';
+import { Calendar, Input, Button, TodoItem } from '../components/ui';
 import './TodoApp.css';
 
 const TodoApp: React.FC = () => {
@@ -196,7 +197,7 @@ const TodoApp: React.FC = () => {
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (
       e.key === 'Enter' &&
-      (e.target as HTMLInputElement).className === 'todo-input'
+      (e.target as HTMLInputElement).classList.contains('todo-input')
     ) {
       addTodo();
     }
@@ -264,8 +265,7 @@ const TodoApp: React.FC = () => {
 
         <div className="todo-input-section">
           <div className="main-input-row">
-            <input
-              type="text"
+            <Input
               value={inputValue}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setInputValue(e.target.value)
@@ -274,47 +274,41 @@ const TodoApp: React.FC = () => {
               placeholder="新しいタスクを入力..."
               className="todo-input"
             />
-            <button onClick={addTodo} className="add-button">
+            <Button onClick={addTodo} className="add-button">
               追加
-            </button>
+            </Button>
           </div>
 
           <div className="date-input-section">
             <div className="date-input-toggle">
               <label>
                 期限日（任意）:
-                <button
-                  type="button"
+                <Button
+                  variant="secondary"
+                  size="small"
                   onClick={() => setIsManualDate(!isManualDate)}
                   className="toggle-date-input"
                 >
                   {isManualDate ? 'カレンダー入力' : '手動入力'}
-                </button>
+                </Button>
               </label>
             </div>
 
             {isManualDate ? (
-              <>
-                <input
-                  type="text"
-                  value={dueDateValue}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleDateValueChange(e.target.value)
-                  }
-                  placeholder="YYYY-MM-DD 形式で入力"
-                  className={`date-input manual ${dateError ? 'error' : ''}`}
-                />
-                {dateError && (
-                  <span className="error-message">{dateError}</span>
-                )}
-              </>
-            ) : (
-              <input
-                type="date"
+              <Input
                 value={dueDateValue}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   handleDateValueChange(e.target.value)
                 }
+                placeholder="YYYY-MM-DD 形式で入力"
+                className="date-input manual"
+                error={dateError}
+              />
+            ) : (
+              <Calendar
+                value={dueDateValue}
+                onChange={handleDateValueChange}
+                placeholder="期限日を選択してください"
                 className="date-input calendar"
               />
             )}
@@ -328,94 +322,25 @@ const TodoApp: React.FC = () => {
             </p>
           ) : (
             todos.map((todo: Todo) => (
-              <div
+              <TodoItem
                 key={todo.id}
-                className={`todo-item ${todo.completed ? 'completed' : ''} ${isOverdue(todo.dueDate) && !todo.completed ? 'overdue' : ''} ${isDueToday(todo.dueDate) && !todo.completed ? 'due-today' : ''}`}
-              >
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => toggleTodo(todo.id)}
-                  className="todo-checkbox"
-                />
-                <div className="todo-content">
-                  {editingId === todo.id ? (
-                    <input
-                      type="text"
-                      value={editingText}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        setEditingText(e.target.value)
-                      }
-                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) =>
-                        handleEditKeyDown(e, todo.id)
-                      }
-                      onBlur={() => saveEdit(todo.id)}
-                      className="todo-edit-input"
-                      autoFocus
-                    />
-                  ) : (
-                    <span
-                      className="todo-text"
-                      onClick={() => startEditing(todo.id, todo.text)}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      {todo.text}
-                    </span>
-                  )}
-                  {editingDateId === todo.id ? (
-                    <div className="todo-date-edit">
-                      <input
-                        type="text"
-                        value={editingDate}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          handleEditDateChange(e.target.value)
-                        }
-                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) =>
-                          handleDateEditKeyDown(e, todo.id)
-                        }
-                        onBlur={() => saveDateEdit(todo.id)}
-                        className={`todo-date-edit-input ${editDateError ? 'error' : ''}`}
-                        placeholder="YYYY-MM-DD 形式で入力"
-                        autoFocus
-                      />
-                      <span className="edit-hint">
-                        Enter: 保存 | Esc: キャンセル | 空: 削除
-                      </span>
-                      {editDateError && (
-                        <span className="error-message">{editDateError}</span>
-                      )}
-                    </div>
-                  ) : (
-                    <>
-                      {todo.dueDate ? (
-                        <span
-                          className="todo-due-date"
-                          onClick={() =>
-                            startEditingDate(todo.id, todo.dueDate)
-                          }
-                          style={{ cursor: 'pointer' }}
-                        >
-                          期限: {formatDate(todo.dueDate)}
-                        </span>
-                      ) : (
-                        <span
-                          className="todo-add-date"
-                          onClick={() => startEditingDate(todo.id, '')}
-                          style={{ cursor: 'pointer' }}
-                        >
-                          期限を追加
-                        </span>
-                      )}
-                    </>
-                  )}
-                </div>
-                <button
-                  onClick={() => deleteTodo(todo.id)}
-                  className="delete-button"
-                >
-                  削除
-                </button>
-              </div>
+                todo={todo}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+                onEditText={saveEdit}
+                onEditDate={saveDateEdit}
+                onStartEditingText={startEditing}
+                onStartEditingDate={startEditingDate}
+                isEditingText={editingId === todo.id}
+                isEditingDate={editingDateId === todo.id}
+                editingText={editingText}
+                editingDate={editingDate}
+                onEditingTextChange={setEditingText}
+                onEditingDateChange={setEditingDate}
+                onCancelEdit={cancelEdit}
+                onCancelDateEdit={cancelDateEdit}
+                editDateError={editDateError}
+              />
             ))
           )}
         </div>
@@ -426,9 +351,13 @@ const TodoApp: React.FC = () => {
             {todos.filter((todo: Todo) => todo.completed).length} | 未完了:{' '}
             {todos.filter((todo: Todo) => !todo.completed).length}
           </p>
-          <button onClick={clearAllData} className="clear-data-button">
+          <Button 
+            onClick={clearAllData} 
+            variant="danger" 
+            className="clear-data-button"
+          >
             すべてのデータを削除
-          </button>
+          </Button>
         </div>
       </div>
     </div>

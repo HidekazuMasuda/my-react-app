@@ -14,22 +14,26 @@
   background-color: #f8f9fa;
 }
 
-.todo-item--completed {
+.todo-item--completed,
+.todo-item.completed {
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
 
-.todo-item--overdue {
+.todo-item--overdue,
+.todo-item.overdue {
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
 
-.todo-item--due-today {
+.todo-item--due-today,
+.todo-item.due-today {
   background-color: #fff3cd;
   border-color: #ffeaa7;
 }
 
-.todo-item__checkbox {
+.todo-item__checkbox,
+.todo-checkbox {
   width: 1.2rem;
   height: 1.2rem;
   cursor: pointer;
@@ -43,23 +47,29 @@
   gap: 0.3rem;
 }
 
-.todo-item__text {
+.todo-item__text,
+.todo-text {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0.2rem 0;
 }
 
-.todo-item--completed .todo-item__text {
+.todo-item--completed .todo-item__text,
+.todo-item--completed .todo-text,
+.todo-item.completed .todo-item__text,
+.todo-item.completed .todo-text {
   text-decoration: line-through;
   color: #6c757d;
 }
 
-.todo-item__edit-input {
+.todo-item__edit-input,
+.todo-edit-input {
   flex: 1;
 }
 
-.todo-item__due-date {
+.todo-item__due-date,
+.todo-due-date {
   font-size: 0.8rem;
   color: #6c757d;
   font-style: italic;
@@ -67,21 +77,29 @@
   transition: color 0.3s ease;
 }
 
-.todo-item__due-date:hover {
+.todo-item__due-date:hover,
+.todo-due-date:hover {
   color: #3498db;
 }
 
-.todo-item--overdue .todo-item__due-date {
+.todo-item--overdue .todo-item__due-date,
+.todo-item--overdue .todo-due-date,
+.todo-item.overdue .todo-item__due-date,
+.todo-item.overdue .todo-due-date {
   color: #dc3545;
   font-weight: 500;
 }
 
-.todo-item--due-today .todo-item__due-date {
+.todo-item--due-today .todo-item__due-date,
+.todo-item--due-today .todo-due-date,
+.todo-item.due-today .todo-item__due-date,
+.todo-item.due-today .todo-due-date {
   color: #f39c12;
   font-weight: 500;
 }
 
-.todo-item__add-date {
+.todo-item__add-date,
+.todo-add-date {
   font-size: 0.8rem;
   color: #6c757d;
   font-style: italic;
@@ -90,7 +108,8 @@
   transition: color 0.3s ease;
 }
 
-.todo-item__add-date:hover {
+.todo-item__add-date:hover,
+.todo-add-date:hover {
   color: #3498db;
 }
 
@@ -100,7 +119,8 @@
   gap: 0.3rem;
 }
 
-.todo-item__date-edit-input {
+.todo-item__date-edit-input,
+.todo-date-edit-input {
   font-size: 0.8rem;
 }
 

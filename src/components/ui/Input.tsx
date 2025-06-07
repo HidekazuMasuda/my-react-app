@@ -55,7 +55,7 @@ const Input: React.FC<InputProps> = ({
         onBlur={onBlur}
         autoFocus={autoFocus}
       />
-      {error && <span className="input-error-message">{error}</span>}
+      {error && <span className="input-error-message error-message">{error}</span>}
     </div>
   );
 };

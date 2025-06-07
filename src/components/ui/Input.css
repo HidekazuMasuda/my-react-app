@@ -45,7 +45,8 @@
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
 
-.input-error-message {
+.input-error-message,
+.error-message {
   font-size: 0.8rem;
   color: #dc3545;
   font-style: italic;
