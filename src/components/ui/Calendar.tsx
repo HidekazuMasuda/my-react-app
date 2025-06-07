@@ -12,6 +12,7 @@ export interface CalendarProps {
   error?: string;
   label?: string;
   required?: boolean;
+  autoClose?: boolean; // 日付選択時に自動的に閉じるかどうか（デフォルト: true）
 }
 
 const Calendar: React.FC<CalendarProps> = ({
@@ -25,6 +26,7 @@ const Calendar: React.FC<CalendarProps> = ({
   error,
   label,
   required = false,
+  autoClose = true,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(() => {
@@ -117,7 +119,9 @@ const Calendar: React.FC<CalendarProps> = ({
     const day = String(date.getDate()).padStart(2, '0');
     const dateStr = `${year}-${month}-${day}`;
     onChange(dateStr);
-    setIsOpen(false);
+    if (autoClose) {
+      setIsOpen(false);
+    }
   };
 
   // 前月に移動
