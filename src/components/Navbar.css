@@ -11,10 +11,15 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   height: 60px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .navbar-brand a {
@@ -56,6 +61,10 @@
 @media (max-width: 768px) {
   .navbar-container {
     padding: 0 1rem;
+  }
+  
+  .navbar-left {
+    gap: 1rem;
   }
   
   .navbar-links {
