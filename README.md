@@ -43,7 +43,36 @@ npx playwright test tests/todo-persistence.spec.js
 npx playwright show-report
 ```
 
-**注意**: E2Eテストを実行する前に、開発サーバー（`npm start`）が http://localhost:3000 で起動している必要があります。
+### 受け入れテスト
+
+#### 自然言語による受け入れテスト
+
+利用者のユースケースの立場で自然言語的にテストを記述した受け入れテストも導入されています：
+
+```bash
+# 自然言語受け入れテスト
+npm run test:acceptance
+
+# ユーザージャーニーテスト
+npm run test:journey
+
+# 全テスト（E2E + 受け入れ + ジャーニー）
+npm run test:all
+
+# 品質チェック + 全テスト
+npm run test:full
+```
+
+#### 受け入れテストの特徴
+
+- **自然言語アプローチ**: テストが読みやすく、非技術者でも理解できる
+- **ユーザーシナリオベース**: 実際の利用者の行動パターンに基づく
+- **包括的カバレッジ**: 新規ユーザーからエキスパートユーザーまで
+- **エラーケース考慮**: 過去日付入力などのエラーハンドリングもテスト
+
+詳細は `tests/acceptance/README.md` を参照してください。
+
+**注意**: 全てのテストを実行する前に、開発サーバー（`npm start`）が http://localhost:3000 で起動している必要があります。
 
 ### `npm run build`
 
