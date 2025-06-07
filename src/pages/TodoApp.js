@@ -6,27 +6,32 @@ function TodoApp() {
   const [inputValue, setInputValue] = useState('');
   const [dueDateValue, setDueDateValue] = useState('');
   const [isManualDate, setIsManualDate] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [isClearing, setIsClearing] = useState(false);
 
   // localStorage からデータを読み込む
   useEffect(() => {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       try {
-        setTodos(JSON.parse(savedTodos));
+        const parsedTodos = JSON.parse(savedTodos);
+        setTodos(parsedTodos);
       } catch (error) {
         console.error('Failed to parse todos from localStorage:', error);
+        setTodos([]);
       }
+    } else {
+      setTodos([]);
     }
+    setIsInitialized(true);
   }, []);
 
-  // todosが変更されたらlocalStorageに保存（初期状態は除く）
+  // todosが変更されたらlocalStorageに保存（初期化後のみ、クリア中は除く）
   useEffect(() => {
-    const savedTodos = localStorage.getItem('todos');
-    // 初期状態（空配列）かつlocalStorageにデータがない場合は保存しない
-    if (todos.length > 0 || savedTodos) {
+    if (isInitialized && !isClearing) {
       localStorage.setItem('todos', JSON.stringify(todos));
     }
-  }, [todos]);
+  }, [todos, isInitialized, isClearing]);
 
   const addTodo = () => {
     if (inputValue.trim() !== '') {
@@ -94,8 +99,10 @@ function TodoApp() {
     );
     
     if (confirmClear) {
+      setIsClearing(true);
       localStorage.removeItem('todos');
       setTodos([]);
+      setTimeout(() => setIsClearing(false), 100);
     }
   };
 
