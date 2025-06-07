@@ -165,6 +165,70 @@
   transition: all 0.3s ease;
 }
 
+.todo-edit-input {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.todo-edit-input:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.todo-add-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-style: italic;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.todo-add-date:hover {
+  color: #3498db;
+}
+
+.todo-due-date {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.todo-due-date:hover {
+  color: #3498db;
+}
+
+.todo-date-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.todo-date-edit-input {
+  padding: 0.3rem 0.5rem;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  outline: none;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.todo-date-edit-input:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.edit-hint {
+  font-size: 0.7rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
 .todo-item.completed .todo-text {
   text-decoration: line-through;
   color: #6c757d;

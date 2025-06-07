@@ -8,6 +8,10 @@ function TodoApp() {
   const [isManualDate, setIsManualDate] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [isClearing, setIsClearing] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+  const [editingText, setEditingText] = useState('');
+  const [editingDateId, setEditingDateId] = useState(null);
+  const [editingDate, setEditingDate] = useState('');
 
   // localStorage からデータを読み込む
   useEffect(() => {
@@ -57,6 +61,60 @@ function TodoApp() {
 
   const deleteTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const startEditing = (id, text) => {
+    setEditingId(id);
+    setEditingText(text);
+  };
+
+  const saveEdit = (id) => {
+    if (editingText.trim() !== '') {
+      setTodos(todos.map(todo =>
+        todo.id === id ? { ...todo, text: editingText.trim() } : todo
+      ));
+    }
+    setEditingId(null);
+    setEditingText('');
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setEditingText('');
+  };
+
+  const handleEditKeyDown = (e, id) => {
+    if (e.key === 'Enter') {
+      saveEdit(id);
+    } else if (e.key === 'Escape') {
+      cancelEdit();
+    }
+  };
+
+  const startEditingDate = (id, dueDate) => {
+    setEditingDateId(id);
+    setEditingDate(dueDate || '');
+  };
+
+  const saveDateEdit = (id) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, dueDate: editingDate || null } : todo
+    ));
+    setEditingDateId(null);
+    setEditingDate('');
+  };
+
+  const cancelDateEdit = () => {
+    setEditingDateId(null);
+    setEditingDate('');
+  };
+
+  const handleDateEditKeyDown = (e, id) => {
+    if (e.key === 'Enter') {
+      saveDateEdit(id);
+    } else if (e.key === 'Escape') {
+      cancelDateEdit();
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -172,11 +230,58 @@ function TodoApp() {
                   className="todo-checkbox"
                 />
                 <div className="todo-content">
-                  <span className="todo-text">{todo.text}</span>
-                  {todo.dueDate && (
-                    <span className="todo-due-date">
-                      期限: {formatDate(todo.dueDate)}
+                  {editingId === todo.id ? (
+                    <input
+                      type="text"
+                      value={editingText}
+                      onChange={(e) => setEditingText(e.target.value)}
+                      onKeyDown={(e) => handleEditKeyDown(e, todo.id)}
+                      onBlur={() => saveEdit(todo.id)}
+                      className="todo-edit-input"
+                      autoFocus
+                    />
+                  ) : (
+                    <span 
+                      className="todo-text"
+                      onClick={() => startEditing(todo.id, todo.text)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {todo.text}
                     </span>
+                  )}
+                  {editingDateId === todo.id ? (
+                    <div className="todo-date-edit">
+                      <input
+                        type="date"
+                        value={editingDate}
+                        onChange={(e) => setEditingDate(e.target.value)}
+                        onKeyDown={(e) => handleDateEditKeyDown(e, todo.id)}
+                        onBlur={() => saveDateEdit(todo.id)}
+                        className="todo-date-edit-input"
+                        autoFocus
+                      />
+                      <span className="edit-hint">Enter: 保存 | Esc: キャンセル | 空: 削除</span>
+                    </div>
+                  ) : (
+                    <>
+                      {todo.dueDate ? (
+                        <span 
+                          className="todo-due-date"
+                          onClick={() => startEditingDate(todo.id, todo.dueDate)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          期限: {formatDate(todo.dueDate)}
+                        </span>
+                      ) : (
+                        <span 
+                          className="todo-add-date"
+                          onClick={() => startEditingDate(todo.id, '')}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          期限を追加
+                        </span>
+                      )}
+                    </>
                   )}
                 </div>
                 <button

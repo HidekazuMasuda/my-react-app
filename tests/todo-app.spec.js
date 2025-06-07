@@ -141,4 +141,92 @@ test.describe('TODOアプリ', () => {
     await expect(page.locator('.todo-item')).toHaveCount(0);
     await expect(page.locator('.empty-message')).toBeVisible();
   });
+
+  test('TODOテキストをクリックして編集できる', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // TODOを追加
+    await page.fill('.todo-input', '編集前のテキスト');
+    await page.click('.add-button');
+    
+    // TODOテキストをクリックして編集モードに
+    await page.click('.todo-text');
+    
+    // 編集用入力フィールドが表示されることを確認
+    await expect(page.locator('.todo-edit-input')).toBeVisible();
+    await expect(page.locator('.todo-edit-input')).toHaveValue('編集前のテキスト');
+    
+    // テキストを編集
+    await page.fill('.todo-edit-input', '編集後のテキスト');
+    
+    // Enterキーで保存
+    await page.press('.todo-edit-input', 'Enter');
+    
+    // 編集されたテキストが表示されることを確認
+    await expect(page.locator('.todo-text')).toContainText('編集後のテキスト');
+    await expect(page.locator('.todo-edit-input')).not.toBeVisible();
+  });
+
+  test('編集中にEscapeキーでキャンセルできる', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // TODOを追加
+    await page.fill('.todo-input', '元のテキスト');
+    await page.click('.add-button');
+    
+    // TODOテキストをクリックして編集モードに
+    await page.click('.todo-text');
+    
+    // テキストを変更
+    await page.fill('.todo-edit-input', '変更されたテキスト');
+    
+    // Escapeキーでキャンセル
+    await page.press('.todo-edit-input', 'Escape');
+    
+    // 元のテキストがそのまま残ることを確認
+    await expect(page.locator('.todo-text')).toContainText('元のテキスト');
+    await expect(page.locator('.todo-edit-input')).not.toBeVisible();
+  });
+
+  test('編集中にフォーカスを外すと保存される', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // TODOを追加
+    await page.fill('.todo-input', '保存テスト');
+    await page.click('.add-button');
+    
+    // TODOテキストをクリックして編集モードに
+    await page.click('.todo-text');
+    
+    // テキストを編集
+    await page.fill('.todo-edit-input', '保存されたテキスト');
+    
+    // 他の場所をクリックしてフォーカスを外す
+    await page.click('.todo-container h1');
+    
+    // 編集されたテキストが保存されることを確認
+    await expect(page.locator('.todo-text')).toContainText('保存されたテキスト');
+    await expect(page.locator('.todo-edit-input')).not.toBeVisible();
+  });
+
+  test('空のテキストで編集しても保存されない', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // TODOを追加
+    await page.fill('.todo-input', '空編集テスト');
+    await page.click('.add-button');
+    
+    // TODOテキストをクリックして編集モードに
+    await page.click('.todo-text');
+    
+    // テキストを空にする
+    await page.fill('.todo-edit-input', '   ');
+    
+    // Enterキーで保存を試行
+    await page.press('.todo-edit-input', 'Enter');
+    
+    // 元のテキストがそのまま残ることを確認
+    await expect(page.locator('.todo-text')).toContainText('空編集テスト');
+    await expect(page.locator('.todo-edit-input')).not.toBeVisible();
+  });
 });

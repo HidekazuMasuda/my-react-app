@@ -164,4 +164,123 @@ test.describe('TODOアプリ - 期限日機能', () => {
     await expect(page.locator('.todo-input')).toHaveValue('');
     await expect(page.locator('.date-input.calendar')).toHaveValue('');
   });
+
+  test('期限日をクリックして編集できる', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // 期限日付きTODOを追加
+    await page.fill('.todo-input', '期限編集テスト');
+    await page.fill('.date-input.calendar', '2024-12-25');
+    await page.click('.add-button');
+    
+    // 期限日をクリックして編集モードに
+    await page.click('.todo-due-date');
+    
+    // 編集用入力フィールドが表示されることを確認
+    await expect(page.locator('.todo-date-edit-input')).toBeVisible();
+    await expect(page.locator('.todo-date-edit-input')).toHaveValue('2024-12-25');
+    
+    // 期限日を変更
+    await page.fill('.todo-date-edit-input', '2025-01-01');
+    
+    // Enterキーで保存
+    await page.press('.todo-date-edit-input', 'Enter');
+    
+    // 変更された期限日が表示されることを確認
+    await expect(page.locator('.todo-due-date')).toContainText('期限: 2025/01/01');
+    await expect(page.locator('.todo-date-edit-input')).not.toBeVisible();
+  });
+
+  test('期限日なしのTODOに期限を追加できる', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // 期限日なしのTODOを追加
+    await page.fill('.todo-input', '期限追加テスト');
+    await page.click('.add-button');
+    
+    // 「期限を追加」をクリック
+    await page.click('.todo-add-date');
+    
+    // 編集用入力フィールドが表示されることを確認
+    await expect(page.locator('.todo-date-edit-input')).toBeVisible();
+    await expect(page.locator('.todo-date-edit-input')).toHaveValue('');
+    
+    // 期限日を設定
+    await page.fill('.todo-date-edit-input', '2024-12-31');
+    
+    // Enterキーで保存
+    await page.press('.todo-date-edit-input', 'Enter');
+    
+    // 期限日が表示されることを確認
+    await expect(page.locator('.todo-due-date')).toBeVisible();
+    await expect(page.locator('.todo-due-date')).toContainText('期限: 2024/12/31');
+    await expect(page.locator('.todo-add-date')).not.toBeVisible();
+  });
+
+  test('期限日編集中にEscapeキーでキャンセルできる', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // 期限日付きTODOを追加
+    await page.fill('.todo-input', 'キャンセルテスト');
+    await page.fill('.date-input.calendar', '2024-12-25');
+    await page.click('.add-button');
+    
+    // 期限日をクリックして編集モードに
+    await page.click('.todo-due-date');
+    
+    // 期限日を変更
+    await page.fill('.todo-date-edit-input', '2025-06-01');
+    
+    // Escapeキーでキャンセル
+    await page.press('.todo-date-edit-input', 'Escape');
+    
+    // 元の期限日がそのまま残ることを確認
+    await expect(page.locator('.todo-due-date')).toContainText('期限: 2024/12/25');
+    await expect(page.locator('.todo-date-edit-input')).not.toBeVisible();
+  });
+
+  test('期限日を空にして削除できる', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // 期限日付きTODOを追加
+    await page.fill('.todo-input', '期限削除テスト');
+    await page.fill('.date-input.calendar', '2024-12-25');
+    await page.click('.add-button');
+    
+    // 期限日をクリックして編集モードに
+    await page.click('.todo-due-date');
+    
+    // 期限日を空にする
+    await page.fill('.todo-date-edit-input', '');
+    
+    // Enterキーで保存
+    await page.press('.todo-date-edit-input', 'Enter');
+    
+    // 期限日が削除されて「期限を追加」が表示されることを確認
+    await expect(page.locator('.todo-due-date')).not.toBeVisible();
+    await expect(page.locator('.todo-add-date')).toBeVisible();
+    await expect(page.locator('.todo-add-date')).toContainText('期限を追加');
+  });
+
+  test('期限日編集中にフォーカスを外すと保存される', async ({ page }) => {
+    await page.goto('/todo');
+    
+    // 期限日付きTODOを追加
+    await page.fill('.todo-input', 'フォーカス外しテスト');
+    await page.fill('.date-input.calendar', '2024-12-25');
+    await page.click('.add-button');
+    
+    // 期限日をクリックして編集モードに
+    await page.click('.todo-due-date');
+    
+    // 期限日を変更
+    await page.fill('.todo-date-edit-input', '2025-03-15');
+    
+    // 他の場所をクリックしてフォーカスを外す
+    await page.click('.todo-container h1');
+    
+    // 変更された期限日が保存されることを確認
+    await expect(page.locator('.todo-due-date')).toContainText('期限: 2025/03/15');
+    await expect(page.locator('.todo-date-edit-input')).not.toBeVisible();
+  });
 });
