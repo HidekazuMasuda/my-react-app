@@ -16,8 +16,34 @@
 
 ### `npm test`
 
-テストランナーをインタラクティブなウォッチモードで起動します。\
+Reactのユニットテストをインタラクティブなウォッチモードで起動します。\
 詳細については、[テスト実行](https://facebook.github.io/create-react-app/docs/running-tests)のセクションを参照してください。
+
+### `npx playwright test`
+
+PlaywrightによるE2Eテストを実行します。\
+アプリケーションの機能全体をブラウザ上で自動テストします。
+
+#### E2Eテストの詳細
+
+- **基本機能テスト**: TODOの追加、削除、完了切り替えなど（9テスト）
+- **期限日機能テスト**: カレンダー・手動入力、期限切れハイライトなど（8テスト）
+- **永続化テスト**: localStorage保存、リロード後の保持など（9テスト）
+
+```bash
+# 全テストを実行
+npx playwright test
+
+# 特定のテストファイルのみ実行
+npx playwright test tests/todo-app.spec.js
+npx playwright test tests/todo-due-date.spec.js
+npx playwright test tests/todo-persistence.spec.js
+
+# テスト結果のHTMLレポートを表示
+npx playwright show-report
+```
+
+**注意**: E2Eテストを実行する前に、開発サーバー（`npm start`）が http://localhost:3000 で起動している必要があります。
 
 ### `npm run build`
 
