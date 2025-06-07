@@ -1,0 +1,92 @@
+.home {
+  text-align: center;
+}
+
+.home-logo {
+  height: 30vmin;
+  pointer-events: none;
+  margin-bottom: 2rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-logo {
+    animation: home-logo-spin infinite 20s linear;
+  }
+}
+
+.home-header {
+  background-color: #282c34;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 2rem;
+}
+
+.welcome-section {
+  margin: 2rem 0;
+}
+
+.welcome-section h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #61dafb;
+  min-height: 3rem;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-section label {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.name-input {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  border: 2px solid #61dafb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #282c34;
+  outline: none;
+  transition: border-color 0.3s ease;
+  min-width: 250px;
+}
+
+.name-input:focus {
+  border-color: #21a9c7;
+  box-shadow: 0 0 8px rgba(97, 218, 251, 0.3);
+}
+
+.name-input::placeholder {
+  color: #999;
+}
+
+.home-link {
+  color: #61dafb;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.home-link:hover {
+  color: #21a9c7;
+}
+
+@keyframes home-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
