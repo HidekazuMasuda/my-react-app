@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, KeyboardEvent, ChangeEvent } from 'react';
+import { Todo, ValidationResult } from '../types/todo';
 import './TodoApp.css';
 
-function TodoApp() {
-  const [todos, setTodos] = useState(() => {
+const TodoApp: React.FC = () => {
+  const [todos, setTodos] = useState<Todo[]>(() => {
     // localStorage からデータを読み込む（初期化時のみ）
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       try {
-        const parsedTodos = JSON.parse(savedTodos);
+        const parsedTodos: Todo[] = JSON.parse(savedTodos);
         return parsedTodos;
       } catch (error) {
         console.error('Failed to parse todos from localStorage:', error);
@@ -16,26 +17,26 @@ function TodoApp() {
     }
     return [];
   });
-  const [inputValue, setInputValue] = useState('');
-  const [dueDateValue, setDueDateValue] = useState('');
-  const [isManualDate, setIsManualDate] = useState(false);
-  const [isClearing, setIsClearing] = useState(false);
-  const [editingId, setEditingId] = useState(null);
-  const [editingText, setEditingText] = useState('');
-  const [editingDateId, setEditingDateId] = useState(null);
-  const [editingDate, setEditingDate] = useState('');
-  const [dateError, setDateError] = useState('');
-  const [editDateError, setEditDateError] = useState('');
+  const [inputValue, setInputValue] = useState<string>('');
+  const [dueDateValue, setDueDateValue] = useState<string>('');
+  const [isManualDate, setIsManualDate] = useState<boolean>(false);
+  const [isClearing, setIsClearing] = useState<boolean>(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingText, setEditingText] = useState<string>('');
+  const [editingDateId, setEditingDateId] = useState<number | null>(null);
+  const [editingDate, setEditingDate] = useState<string>('');
+  const [dateError, setDateError] = useState<string>('');
+  const [editDateError, setEditDateError] = useState<string>('');
 
   // localStorageに保存するヘルパー関数
-  const saveTodosToLocalStorage = (todosToSave) => {
+  const saveTodosToLocalStorage = (todosToSave: Todo[]): void => {
     if (!isClearing) {
       localStorage.setItem('todos', JSON.stringify(todosToSave));
     }
   };
 
   // 日付バリデーション関数
-  const validateDate = (dateString) => {
+  const validateDate = (dateString: string): ValidationResult => {
     if (!dateString.trim()) {
       return { isValid: true, error: '' }; // 空の場合は有効（期限なしとして扱う）
     }
@@ -72,7 +73,7 @@ function TodoApp() {
     return { isValid: true, error: '' };
   };
 
-  const addTodo = () => {
+  const addTodo = (): void => {
     if (inputValue.trim() !== '') {
       // 手動入力の場合のみバリデーション
       if (isManualDate && dueDateValue) {
@@ -84,7 +85,7 @@ function TodoApp() {
       }
       
       setDateError(''); // エラーをクリア
-      const newTodos = [
+      const newTodos: Todo[] = [
         ...todos,
         {
           id: Date.now(),
@@ -100,7 +101,7 @@ function TodoApp() {
     }
   };
 
-  const toggleTodo = (id) => {
+  const toggleTodo = (id: number): void => {
     const newTodos = todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
@@ -108,18 +109,18 @@ function TodoApp() {
     saveTodosToLocalStorage(newTodos);
   };
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: number): void => {
     const newTodos = todos.filter(todo => todo.id !== id);
     setTodos(newTodos);
     saveTodosToLocalStorage(newTodos);
   };
 
-  const startEditing = (id, text) => {
+  const startEditing = (id: number, text: string): void => {
     setEditingId(id);
     setEditingText(text);
   };
 
-  const saveEdit = (id) => {
+  const saveEdit = (id: number): void => {
     if (editingText.trim() !== '') {
       const newTodos = todos.map(todo =>
         todo.id === id ? { ...todo, text: editingText.trim() } : todo
@@ -131,12 +132,12 @@ function TodoApp() {
     setEditingText('');
   };
 
-  const cancelEdit = () => {
+  const cancelEdit = (): void => {
     setEditingId(null);
     setEditingText('');
   };
 
-  const handleEditKeyDown = (e, id) => {
+  const handleEditKeyDown = (e: KeyboardEvent<HTMLInputElement>, id: number): void => {
     if (e.key === 'Enter') {
       saveEdit(id);
     } else if (e.key === 'Escape') {
@@ -144,12 +145,12 @@ function TodoApp() {
     }
   };
 
-  const startEditingDate = (id, dueDate) => {
+  const startEditingDate = (id: number, dueDate: string | null): void => {
     setEditingDateId(id);
     setEditingDate(dueDate || '');
   };
 
-  const saveDateEdit = (id) => {
+  const saveDateEdit = (id: number): void => {
     // 日付バリデーション
     if (editingDate) {
       const validation = validateDate(editingDate);
@@ -169,13 +170,13 @@ function TodoApp() {
     setEditingDate('');
   };
 
-  const cancelDateEdit = () => {
+  const cancelDateEdit = (): void => {
     setEditingDateId(null);
     setEditingDate('');
     setEditDateError(''); // エラーもクリア
   };
 
-  const handleDateEditKeyDown = (e, id) => {
+  const handleDateEditKeyDown = (e: KeyboardEvent<HTMLInputElement>, id: number): void => {
     if (e.key === 'Enter') {
       saveDateEdit(id);
     } else if (e.key === 'Escape') {
@@ -183,27 +184,27 @@ function TodoApp() {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && e.target.className === 'todo-input') {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === 'Enter' && (e.target as HTMLInputElement).className === 'todo-input') {
       addTodo();
     }
   };
 
-  const handleDateValueChange = (value) => {
+  const handleDateValueChange = (value: string): void => {
     setDueDateValue(value);
     if (dateError) {
       setDateError(''); // 入力時にエラーをクリア
     }
   };
 
-  const handleEditDateChange = (value) => {
+  const handleEditDateChange = (value: string): void => {
     setEditingDate(value);
     if (editDateError) {
       setEditDateError(''); // 入力時にエラーをクリア
     }
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string | null): string => {
     if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleDateString('ja-JP', {
@@ -213,7 +214,7 @@ function TodoApp() {
     });
   };
 
-  const isOverdue = (dueDate) => {
+  const isOverdue = (dueDate: string | null): boolean => {
     if (!dueDate) return false;
     const today = new Date();
     const due = new Date(dueDate);
@@ -222,7 +223,7 @@ function TodoApp() {
     return due < today;
   };
 
-  const isDueToday = (dueDate) => {
+  const isDueToday = (dueDate: string | null): boolean => {
     if (!dueDate) return false;
     const today = new Date();
     const due = new Date(dueDate);
@@ -231,7 +232,7 @@ function TodoApp() {
     return due.getTime() === today.getTime();
   };
 
-  const clearAllData = () => {
+  const clearAllData = (): void => {
     const confirmClear = window.confirm(
       'すべてのTODOデータを削除します。この操作は元に戻せません。よろしいですか？'
     );
@@ -254,7 +255,7 @@ function TodoApp() {
             <input
               type="text"
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="新しいタスクを入力..."
               className="todo-input"
@@ -283,7 +284,7 @@ function TodoApp() {
                 <input
                   type="text"
                   value={dueDateValue}
-                  onChange={(e) => handleDateValueChange(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => handleDateValueChange(e.target.value)}
                   placeholder="YYYY-MM-DD 形式で入力"
                   className={`date-input manual ${dateError ? 'error' : ''}`}
                 />
@@ -293,7 +294,7 @@ function TodoApp() {
               <input
                 type="date"
                 value={dueDateValue}
-                onChange={(e) => handleDateValueChange(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => handleDateValueChange(e.target.value)}
                 className="date-input calendar"
               />
             )}
@@ -304,7 +305,7 @@ function TodoApp() {
           {todos.length === 0 ? (
             <p className="empty-message">まだタスクがありません。新しいタスクを追加してください。</p>
           ) : (
-            todos.map(todo => (
+            todos.map((todo: Todo) => (
               <div key={todo.id} className={`todo-item ${todo.completed ? 'completed' : ''} ${isOverdue(todo.dueDate) && !todo.completed ? 'overdue' : ''} ${isDueToday(todo.dueDate) && !todo.completed ? 'due-today' : ''}`}>
                 <input
                   type="checkbox"
@@ -317,8 +318,8 @@ function TodoApp() {
                     <input
                       type="text"
                       value={editingText}
-                      onChange={(e) => setEditingText(e.target.value)}
-                      onKeyDown={(e) => handleEditKeyDown(e, todo.id)}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => setEditingText(e.target.value)}
+                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => handleEditKeyDown(e, todo.id)}
                       onBlur={() => saveEdit(todo.id)}
                       className="todo-edit-input"
                       autoFocus
@@ -337,8 +338,8 @@ function TodoApp() {
                       <input
                         type="text"
                         value={editingDate}
-                        onChange={(e) => handleEditDateChange(e.target.value)}
-                        onKeyDown={(e) => handleDateEditKeyDown(e, todo.id)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleEditDateChange(e.target.value)}
+                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => handleDateEditKeyDown(e, todo.id)}
                         onBlur={() => saveDateEdit(todo.id)}
                         className={`todo-date-edit-input ${editDateError ? 'error' : ''}`}
                         placeholder="YYYY-MM-DD 形式で入力"
@@ -383,8 +384,8 @@ function TodoApp() {
         <div className="todo-stats">
           <p>
             全体: {todos.length} | 
-            完了: {todos.filter(todo => todo.completed).length} | 
-            未完了: {todos.filter(todo => !todo.completed).length}
+            完了: {todos.filter((todo: Todo) => todo.completed).length} | 
+            未完了: {todos.filter((todo: Todo) => !todo.completed).length}
           </p>
           <button onClick={clearAllData} className="clear-data-button">
             すべてのデータを削除
@@ -393,6 +394,6 @@ function TodoApp() {
       </div>
     </div>
   );
-}
+};
 
 export default TodoApp;

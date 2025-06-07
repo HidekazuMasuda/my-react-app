@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import logo from '../logo.svg';
 import './Home.css';
 
-function Home() {
-  const [name, setName] = useState('');
+const Home: React.FC = () => {
+  const [name, setName] = useState<string>('');
 
   return (
     <div className="home">
@@ -17,7 +17,7 @@ function Home() {
               id="nameInput"
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
               placeholder="お名前"
               className="name-input"
             />
@@ -34,6 +34,6 @@ function Home() {
       </header>
     </div>
   );
-}
+};
 
 export default Home;

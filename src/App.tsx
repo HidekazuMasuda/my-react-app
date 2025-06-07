@@ -1,10 +1,11 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import TodoApp from './pages/TodoApp';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
@@ -16,6 +17,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
