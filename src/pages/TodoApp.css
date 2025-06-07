@@ -21,9 +21,13 @@
 }
 
 .todo-input-section {
+  margin-bottom: 2rem;
+}
+
+.main-input-row {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .todo-input {
@@ -57,6 +61,58 @@
   background-color: #2980b9;
 }
 
+.date-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.date-input-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date-input-toggle label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle-date-input {
+  padding: 0.3rem 0.6rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-date-input:hover {
+  background-color: #e9ecef;
+}
+
+.date-input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.date-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.date-input.manual::placeholder {
+  color: #999;
+}
+
 .todo-list {
   margin-bottom: 2rem;
 }
@@ -81,14 +137,30 @@
   border-color: #c3e6cb;
 }
 
+.todo-item.overdue {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.todo-item.due-today {
+  background-color: #fff3cd;
+  border-color: #ffeaa7;
+}
+
 .todo-checkbox {
   width: 1.2rem;
   height: 1.2rem;
   cursor: pointer;
 }
 
-.todo-text {
+.todo-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.todo-text {
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -96,6 +168,22 @@
 .todo-item.completed .todo-text {
   text-decoration: line-through;
   color: #6c757d;
+}
+
+.todo-due-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.todo-item.overdue .todo-due-date {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.todo-item.due-today .todo-due-date {
+  color: #f39c12;
+  font-weight: 500;
 }
 
 .delete-button {
@@ -144,11 +232,15 @@
     font-size: 2rem;
   }
   
-  .todo-input-section {
+  .main-input-row {
     flex-direction: column;
   }
   
   .add-button {
     width: 100%;
+  }
+  
+  .date-input-section {
+    margin-top: 0.5rem;
   }
 }
