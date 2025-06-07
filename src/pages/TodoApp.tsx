@@ -11,6 +11,7 @@ const TodoApp: React.FC = () => {
         const parsedTodos: Todo[] = JSON.parse(savedTodos);
         return parsedTodos;
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Failed to parse todos from localStorage:', error);
         return [];
       }
@@ -55,9 +56,11 @@ const TodoApp: React.FC = () => {
     const day = parseInt(parts[2], 10);
 
     // Dateオブジェクトが正しく構築され、入力値と一致するかチェック
-    if (date.getFullYear() !== year || 
-        date.getMonth() + 1 !== month || 
-        date.getDate() !== day) {
+    if (
+      date.getFullYear() !== year ||
+      date.getMonth() + 1 !== month ||
+      date.getDate() !== day
+    ) {
       return { isValid: false, error: '存在しない日付です' };
     }
 
@@ -65,7 +68,7 @@ const TodoApp: React.FC = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // 時間をリセットして日付のみで比較
     date.setHours(0, 0, 0, 0);
-    
+
     if (date < today) {
       return { isValid: false, error: '過去の日付は設定できません' };
     }
@@ -83,7 +86,7 @@ const TodoApp: React.FC = () => {
           return;
         }
       }
-      
+
       setDateError(''); // エラーをクリア
       const newTodos: Todo[] = [
         ...todos,
@@ -91,8 +94,8 @@ const TodoApp: React.FC = () => {
           id: Date.now(),
           text: inputValue.trim(),
           completed: false,
-          dueDate: dueDateValue || null
-        }
+          dueDate: dueDateValue || null,
+        },
       ];
       setTodos(newTodos);
       saveTodosToLocalStorage(newTodos);
@@ -137,7 +140,10 @@ const TodoApp: React.FC = () => {
     setEditingText('');
   };
 
-  const handleEditKeyDown = (e: KeyboardEvent<HTMLInputElement>, id: number): void => {
+  const handleEditKeyDown = (
+    e: KeyboardEvent<HTMLInputElement>,
+    id: number
+  ): void => {
     if (e.key === 'Enter') {
       saveEdit(id);
     } else if (e.key === 'Escape') {
@@ -159,7 +165,7 @@ const TodoApp: React.FC = () => {
         return;
       }
     }
-    
+
     setEditDateError(''); // エラーをクリア
     const newTodos = todos.map(todo =>
       todo.id === id ? { ...todo, dueDate: editingDate || null } : todo
@@ -176,7 +182,10 @@ const TodoApp: React.FC = () => {
     setEditDateError(''); // エラーもクリア
   };
 
-  const handleDateEditKeyDown = (e: KeyboardEvent<HTMLInputElement>, id: number): void => {
+  const handleDateEditKeyDown = (
+    e: KeyboardEvent<HTMLInputElement>,
+    id: number
+  ): void => {
     if (e.key === 'Enter') {
       saveDateEdit(id);
     } else if (e.key === 'Escape') {
@@ -185,7 +194,10 @@ const TodoApp: React.FC = () => {
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === 'Enter' && (e.target as HTMLInputElement).className === 'todo-input') {
+    if (
+      e.key === 'Enter' &&
+      (e.target as HTMLInputElement).className === 'todo-input'
+    ) {
       addTodo();
     }
   };
@@ -210,7 +222,7 @@ const TodoApp: React.FC = () => {
     return date.toLocaleDateString('ja-JP', {
       year: 'numeric',
       month: '2-digit',
-      day: '2-digit'
+      day: '2-digit',
     });
   };
 
@@ -236,7 +248,7 @@ const TodoApp: React.FC = () => {
     const confirmClear = window.confirm(
       'すべてのTODOデータを削除します。この操作は元に戻せません。よろしいですか？'
     );
-    
+
     if (confirmClear) {
       setIsClearing(true);
       localStorage.removeItem('todos');
@@ -249,13 +261,15 @@ const TodoApp: React.FC = () => {
     <div className="todo-app">
       <div className="todo-container">
         <h1>TODOアプリ</h1>
-        
+
         <div className="todo-input-section">
           <div className="main-input-row">
             <input
               type="text"
               value={inputValue}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setInputValue(e.target.value)
+              }
               onKeyDown={handleKeyDown}
               placeholder="新しいタスクを入力..."
               className="todo-input"
@@ -264,7 +278,7 @@ const TodoApp: React.FC = () => {
               追加
             </button>
           </div>
-          
+
           <div className="date-input-section">
             <div className="date-input-toggle">
               <label>
@@ -278,23 +292,29 @@ const TodoApp: React.FC = () => {
                 </button>
               </label>
             </div>
-            
+
             {isManualDate ? (
               <>
                 <input
                   type="text"
                   value={dueDateValue}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => handleDateValueChange(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    handleDateValueChange(e.target.value)
+                  }
                   placeholder="YYYY-MM-DD 形式で入力"
                   className={`date-input manual ${dateError ? 'error' : ''}`}
                 />
-                {dateError && <span className="error-message">{dateError}</span>}
+                {dateError && (
+                  <span className="error-message">{dateError}</span>
+                )}
               </>
             ) : (
               <input
                 type="date"
                 value={dueDateValue}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => handleDateValueChange(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  handleDateValueChange(e.target.value)
+                }
                 className="date-input calendar"
               />
             )}
@@ -303,10 +323,15 @@ const TodoApp: React.FC = () => {
 
         <div className="todo-list">
           {todos.length === 0 ? (
-            <p className="empty-message">まだタスクがありません。新しいタスクを追加してください。</p>
+            <p className="empty-message">
+              まだタスクがありません。新しいタスクを追加してください。
+            </p>
           ) : (
             todos.map((todo: Todo) => (
-              <div key={todo.id} className={`todo-item ${todo.completed ? 'completed' : ''} ${isOverdue(todo.dueDate) && !todo.completed ? 'overdue' : ''} ${isDueToday(todo.dueDate) && !todo.completed ? 'due-today' : ''}`}>
+              <div
+                key={todo.id}
+                className={`todo-item ${todo.completed ? 'completed' : ''} ${isOverdue(todo.dueDate) && !todo.completed ? 'overdue' : ''} ${isDueToday(todo.dueDate) && !todo.completed ? 'due-today' : ''}`}
+              >
                 <input
                   type="checkbox"
                   checked={todo.completed}
@@ -318,14 +343,18 @@ const TodoApp: React.FC = () => {
                     <input
                       type="text"
                       value={editingText}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => setEditingText(e.target.value)}
-                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => handleEditKeyDown(e, todo.id)}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        setEditingText(e.target.value)
+                      }
+                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) =>
+                        handleEditKeyDown(e, todo.id)
+                      }
                       onBlur={() => saveEdit(todo.id)}
                       className="todo-edit-input"
                       autoFocus
                     />
                   ) : (
-                    <span 
+                    <span
                       className="todo-text"
                       onClick={() => startEditing(todo.id, todo.text)}
                       style={{ cursor: 'pointer' }}
@@ -338,28 +367,38 @@ const TodoApp: React.FC = () => {
                       <input
                         type="text"
                         value={editingDate}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleEditDateChange(e.target.value)}
-                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => handleDateEditKeyDown(e, todo.id)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          handleEditDateChange(e.target.value)
+                        }
+                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) =>
+                          handleDateEditKeyDown(e, todo.id)
+                        }
                         onBlur={() => saveDateEdit(todo.id)}
                         className={`todo-date-edit-input ${editDateError ? 'error' : ''}`}
                         placeholder="YYYY-MM-DD 形式で入力"
                         autoFocus
                       />
-                      <span className="edit-hint">Enter: 保存 | Esc: キャンセル | 空: 削除</span>
-                      {editDateError && <span className="error-message">{editDateError}</span>}
+                      <span className="edit-hint">
+                        Enter: 保存 | Esc: キャンセル | 空: 削除
+                      </span>
+                      {editDateError && (
+                        <span className="error-message">{editDateError}</span>
+                      )}
                     </div>
                   ) : (
                     <>
                       {todo.dueDate ? (
-                        <span 
+                        <span
                           className="todo-due-date"
-                          onClick={() => startEditingDate(todo.id, todo.dueDate)}
+                          onClick={() =>
+                            startEditingDate(todo.id, todo.dueDate)
+                          }
                           style={{ cursor: 'pointer' }}
                         >
                           期限: {formatDate(todo.dueDate)}
                         </span>
                       ) : (
-                        <span 
+                        <span
                           className="todo-add-date"
                           onClick={() => startEditingDate(todo.id, '')}
                           style={{ cursor: 'pointer' }}
@@ -383,9 +422,9 @@ const TodoApp: React.FC = () => {
 
         <div className="todo-stats">
           <p>
-            全体: {todos.length} | 
-            完了: {todos.filter((todo: Todo) => todo.completed).length} | 
-            未完了: {todos.filter((todo: Todo) => !todo.completed).length}
+            全体: {todos.length} | 完了:{' '}
+            {todos.filter((todo: Todo) => todo.completed).length} | 未完了:{' '}
+            {todos.filter((todo: Todo) => !todo.completed).length}
           </p>
           <button onClick={clearAllData} className="clear-data-button">
             すべてのデータを削除

@@ -17,7 +17,9 @@ const Home: React.FC = () => {
               id="nameInput"
               type="text"
               value={name}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setName(e.target.value)
+              }
               placeholder="お名前"
               className="name-input"
             />

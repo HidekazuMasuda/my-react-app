@@ -13,8 +13,8 @@ const Navbar: React.FC = () => {
             <Link to="/">MyApp</Link>
           </div>
           <div className="navbar-links">
-            <Link 
-              to="/todo" 
+            <Link
+              to="/todo"
               className={location.pathname === '/todo' ? 'active' : ''}
             >
               TODOアプリ

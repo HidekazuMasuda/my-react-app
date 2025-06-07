@@ -319,23 +319,23 @@
   .todo-app {
     padding: 1rem 0.5rem;
   }
-  
+
   .todo-container {
     padding: 1.5rem;
   }
-  
+
   .todo-container h1 {
     font-size: 2rem;
   }
-  
+
   .main-input-row {
     flex-direction: column;
   }
-  
+
   .add-button {
     width: 100%;
   }
-  
+
   .date-input-section {
     margin-top: 0.5rem;
   }

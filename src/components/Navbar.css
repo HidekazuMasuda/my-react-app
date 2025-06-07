@@ -62,15 +62,15 @@
   .navbar-container {
     padding: 0 1rem;
   }
-  
+
   .navbar-left {
     gap: 1rem;
   }
-  
+
   .navbar-links {
     gap: 1rem;
   }
-  
+
   .navbar-links a {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
