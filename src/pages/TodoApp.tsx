@@ -65,12 +65,11 @@ const TodoApp: React.FC = () => {
       return { isValid: false, error: '存在しない日付です' };
     }
 
-    // 過去日チェック（今日より前の日付は無効）
+    // 過去日チェック（今日より前の日付は無効、今日は有効）
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // 時間をリセットして日付のみで比較
-    date.setHours(0, 0, 0, 0);
+    const todayStr = today.toISOString().split('T')[0];
 
-    if (date < today) {
+    if (dateString < todayStr) {
       return { isValid: false, error: '過去の日付は設定できません' };
     }
 
@@ -141,17 +140,6 @@ const TodoApp: React.FC = () => {
     setEditingText('');
   };
 
-  const handleEditKeyDown = (
-    e: KeyboardEvent<HTMLInputElement>,
-    id: number
-  ): void => {
-    if (e.key === 'Enter') {
-      saveEdit(id);
-    } else if (e.key === 'Escape') {
-      cancelEdit();
-    }
-  };
-
   const startEditingDate = (id: number, dueDate: string | null): void => {
     setEditingDateId(id);
     setEditingDate(dueDate || '');
@@ -183,18 +171,6 @@ const TodoApp: React.FC = () => {
     setEditDateError(''); // エラーもクリア
   };
 
-
-  const handleDateEditKeyDown = (
-    e: KeyboardEvent<HTMLInputElement>,
-    id: number
-  ): void => {
-    if (e.key === 'Enter') {
-      saveDateEdit(id);
-    } else if (e.key === 'Escape') {
-      cancelDateEdit();
-    }
-  };
-
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (
       e.key === 'Enter' &&
@@ -209,41 +185,6 @@ const TodoApp: React.FC = () => {
     if (dateError) {
       setDateError(''); // 入力時にエラーをクリア
     }
-  };
-
-  const handleEditDateChange = (value: string): void => {
-    setEditingDate(value);
-    if (editDateError) {
-      setEditDateError(''); // 入力時にエラーをクリア
-    }
-  };
-
-  const formatDate = (dateString: string | null): string => {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    return date.toLocaleDateString('ja-JP', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    });
-  };
-
-  const isOverdue = (dueDate: string | null): boolean => {
-    if (!dueDate) return false;
-    const today = new Date();
-    const due = new Date(dueDate);
-    today.setHours(0, 0, 0, 0);
-    due.setHours(0, 0, 0, 0);
-    return due < today;
-  };
-
-  const isDueToday = (dueDate: string | null): boolean => {
-    if (!dueDate) return false;
-    const today = new Date();
-    const due = new Date(dueDate);
-    today.setHours(0, 0, 0, 0);
-    due.setHours(0, 0, 0, 0);
-    return due.getTime() === today.getTime();
   };
 
   const clearAllData = (): void => {
@@ -352,9 +293,9 @@ const TodoApp: React.FC = () => {
             {todos.filter((todo: Todo) => todo.completed).length} | 未完了:{' '}
             {todos.filter((todo: Todo) => !todo.completed).length}
           </p>
-          <Button 
-            onClick={clearAllData} 
-            variant="danger" 
+          <Button
+            onClick={clearAllData}
+            variant="danger"
             className="clear-data-button"
           >
             すべてのデータを削除

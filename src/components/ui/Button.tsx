@@ -23,7 +23,8 @@ const Button: React.FC<ButtonProps> = ({
   const baseClasses = 'btn';
   const variantClasses = `btn--${variant}`;
   const sizeClasses = `btn--${size}`;
-  const classes = `${baseClasses} ${variantClasses} ${sizeClasses} ${className}`.trim();
+  const classes =
+    `${baseClasses} ${variantClasses} ${sizeClasses} ${className}`.trim();
 
   return (
     <button

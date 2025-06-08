@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Todo } from '../../types/todo';
 import Button from './Button';
 import Input from './Input';
@@ -53,20 +53,14 @@ const TodoItem: React.FC<TodoItemProps> = ({
 
   const isOverdue = (dueDate: string | null): boolean => {
     if (!dueDate) return false;
-    const today = new Date();
-    const due = new Date(dueDate);
-    today.setHours(0, 0, 0, 0);
-    due.setHours(0, 0, 0, 0);
-    return due < today;
+    const today = new Date().toISOString().split('T')[0];
+    return dueDate < today;
   };
 
   const isDueToday = (dueDate: string | null): boolean => {
     if (!dueDate) return false;
-    const today = new Date();
-    const due = new Date(dueDate);
-    today.setHours(0, 0, 0, 0);
-    due.setHours(0, 0, 0, 0);
-    return due.getTime() === today.getTime();
+    const today = new Date().toISOString().split('T')[0];
+    return dueDate === today;
   };
 
   const handleTextEditKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -88,8 +82,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
   const itemClasses = [
     'todo-item',
     todo.completed ? 'todo-item--completed completed' : '',
-    isOverdue(todo.dueDate) && !todo.completed ? 'todo-item--overdue overdue' : '',
-    isDueToday(todo.dueDate) && !todo.completed ? 'todo-item--due-today due-today' : '',
+    isOverdue(todo.dueDate) && !todo.completed
+      ? 'todo-item--overdue overdue'
+      : '',
+    isDueToday(todo.dueDate) && !todo.completed
+      ? 'todo-item--due-today due-today'
+      : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -102,12 +100,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
         onChange={() => onToggle(todo.id)}
         className="todo-item__checkbox todo-checkbox"
       />
-      
+
       <div className="todo-item__content">
         {isEditingText ? (
           <Input
             value={editingText}
-            onChange={(e) => onEditingTextChange?.(e.target.value)}
+            onChange={e => onEditingTextChange?.(e.target.value)}
             onKeyDown={handleTextEditKeyDown}
             onBlur={() => onEditText(todo.id, editingText.trim())}
             className="todo-item__edit-input todo-edit-input"
@@ -126,7 +124,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
           <div className="todo-item__date-edit">
             <Input
               value={editingDate}
-              onChange={(e) => onEditingDateChange?.(e.target.value)}
+              onChange={e => onEditingDateChange?.(e.target.value)}
               onKeyDown={handleDateEditKeyDown}
               onBlur={() => onEditDate(todo.id, editingDate || null)}
               placeholder="YYYY-MM-DD 形式で入力"

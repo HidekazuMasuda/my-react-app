@@ -14,9 +14,28 @@ class NaturalLanguageAcceptanceTest {
   }
 
   async setup() {
-    // ブラウザを起動
-    this.browser = await chromium.launch({ headless: false });
-    const context = await this.browser.newContext();
+    // ブラウザを起動（ヘッドレスモード）
+    this.browser = await chromium.launch({ 
+      headless: true,
+      args: [
+        '--no-sandbox', 
+        '--disable-dev-shm-usage',
+        '--font-render-hinting=none',
+        '--disable-font-subpixel-positioning',
+        '--disable-gpu-sandbox',
+        '--enable-font-antialiasing',
+        '--force-color-profile=srgb'
+      ]
+    });
+    
+    const context = await this.browser.newContext({
+      locale: 'ja-JP',
+      timezoneId: 'Asia/Tokyo',
+      extraHTTPHeaders: {
+        'Accept-Language': 'ja-JP,ja;q=0.9,en;q=0.8'
+      }
+    });
+    
     this.page = await context.newPage();
     
     // エラーハンドリング
@@ -172,11 +191,16 @@ class NaturalLanguageAcceptanceTest {
       // 期限日を編集
       await firstTask.locator('.todo-due-date, .todo-add-date').first().click();
       
+      // 期限日編集フィールドが表示されるまで待機
+      await this.page.waitForTimeout(500);
       const dateInput = firstTask.locator('.todo-date-edit-input');
+      await dateInput.waitFor({ state: 'visible' });
+      
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       const tomorrowStr = tomorrow.toISOString().split('T')[0];
       
+      await dateInput.clear();
       await dateInput.fill(tomorrowStr);
       await dateInput.press('Enter');
       

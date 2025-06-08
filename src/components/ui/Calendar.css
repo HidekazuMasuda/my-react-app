@@ -43,7 +43,9 @@
   background-color: white;
   cursor: pointer;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,7 +110,9 @@
   padding: 0.25rem;
   border-radius: 4px;
   color: #6c757d;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .calendar-nav-button:hover {
@@ -232,7 +236,7 @@
     max-width: 350px;
     z-index: 1050;
   }
-  
+
   .calendar-dropdown::before {
     content: '';
     position: fixed;

@@ -52,15 +52,15 @@ const Calendar: React.FC<CalendarProps> = ({
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const dateStr = `${year}-${month}-${day}`;
-    
+
     if (effectiveMinDate && dateStr < effectiveMinDate) {
       return false;
     }
-    
+
     if (maxDate && dateStr > maxDate) {
       return false;
     }
-    
+
     return true;
   };
 
@@ -84,19 +84,18 @@ const Calendar: React.FC<CalendarProps> = ({
   const generateCalendarDays = (): (Date | null)[] => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
-    
-    // 月の最初の日と最後の日
+
+    // 月の最初の日
     const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    
+
     // 週の最初の日（月曜日）を基準にする
     const startDate = new Date(firstDay);
     const dayOfWeek = (firstDay.getDay() + 6) % 7; // 月曜日を0とする
     startDate.setDate(startDate.getDate() - dayOfWeek);
-    
+
     const days: (Date | null)[] = [];
     const current = new Date(startDate);
-    
+
     // 6週間分の日付を生成
     for (let i = 0; i < 42; i++) {
       if (current.getMonth() === month) {
@@ -106,14 +105,14 @@ const Calendar: React.FC<CalendarProps> = ({
       }
       current.setDate(current.getDate() + 1);
     }
-    
+
     return days;
   };
 
   // 日付を選択
   const handleDateSelect = (date: Date) => {
     if (!isDateSelectable(date)) return;
-    
+
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
@@ -126,12 +125,16 @@ const Calendar: React.FC<CalendarProps> = ({
 
   // 前月に移動
   const goToPreviousMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
+    );
   };
 
   // 次月に移動
   const goToNextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
+    );
   };
 
   // 今日に移動
@@ -150,7 +153,9 @@ const Calendar: React.FC<CalendarProps> = ({
     'calendar-container',
     disabled ? 'calendar-container--disabled' : '',
     error ? 'calendar-container--error' : '',
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div className={containerClasses}>
@@ -160,32 +165,32 @@ const Calendar: React.FC<CalendarProps> = ({
           {required && <span className="calendar-required">*</span>}
         </label>
       )}
-      
+
       {/* Hidden input for E2E test compatibility - positioned at container level */}
       <input
         type="text"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value)}
         className={className} // Use the passed className directly
-        style={{ 
-          position: 'absolute', 
-          top: label ? '2rem' : '0', 
-          left: 0, 
-          width: '100%', 
-          height: label ? 'calc(100% - 2rem)' : '100%', 
-          opacity: 0, 
+        style={{
+          position: 'absolute',
+          top: label ? '2rem' : '0',
+          left: 0,
+          width: '100%',
+          height: label ? 'calc(100% - 2rem)' : '100%',
+          opacity: 0,
           zIndex: -1,
           pointerEvents: 'none',
           border: 'none',
           background: 'transparent',
           fontSize: 'inherit',
-          fontFamily: 'inherit'
+          fontFamily: 'inherit',
         }}
         placeholder={placeholder}
         disabled={disabled}
         data-testid="calendar-input"
       />
-      
+
       <div className="calendar-input-wrapper">
         <button
           type="button"
@@ -193,12 +198,16 @@ const Calendar: React.FC<CalendarProps> = ({
           onClick={() => !disabled && setIsOpen(!isOpen)}
           disabled={disabled}
         >
-          <span className={value ? 'calendar-input__value' : 'calendar-input__placeholder'}>
+          <span
+            className={
+              value ? 'calendar-input__value' : 'calendar-input__placeholder'
+            }
+          >
             {value ? formatDisplayDate(value) : placeholder}
           </span>
           <span className="calendar-input__icon">📅</span>
         </button>
-        
+
         {isOpen && !disabled && (
           <div className="calendar-dropdown">
             <div className="calendar-header">
@@ -218,7 +227,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 ›
               </button>
             </div>
-            
+
             <div className="calendar-actions">
               <button
                 type="button"
@@ -228,21 +237,26 @@ const Calendar: React.FC<CalendarProps> = ({
                 今日
               </button>
             </div>
-            
+
             <div className="calendar-weekdays">
-              {['月', '火', '水', '木', '金', '土', '日'].map((day) => (
+              {['月', '火', '水', '木', '金', '土', '日'].map(day => (
                 <div key={day} className="calendar-weekday">
                   {day}
                 </div>
               ))}
             </div>
-            
+
             <div className="calendar-days">
               {calendarDays.map((date, index) => {
                 if (!date) {
-                  return <div key={index} className="calendar-day calendar-day--empty" />;
+                  return (
+                    <div
+                      key={index}
+                      className="calendar-day calendar-day--empty"
+                    />
+                  );
                 }
-                
+
                 const year = date.getFullYear();
                 const month = String(date.getMonth() + 1).padStart(2, '0');
                 const day = String(date.getDate()).padStart(2, '0');
@@ -250,14 +264,16 @@ const Calendar: React.FC<CalendarProps> = ({
                 const isSelected = selectedDate && dateStr === value;
                 const isToday = dateStr === today;
                 const isSelectable = isDateSelectable(date);
-                
+
                 const dayClasses = [
                   'calendar-day',
                   isSelected ? 'calendar-day--selected' : '',
                   isToday ? 'calendar-day--today' : '',
                   !isSelectable ? 'calendar-day--disabled' : '',
-                ].filter(Boolean).join(' ');
-                
+                ]
+                  .filter(Boolean)
+                  .join(' ');
+
                 return (
                   <button
                     key={index}
@@ -274,7 +290,7 @@ const Calendar: React.FC<CalendarProps> = ({
           </div>
         )}
       </div>
-      
+
       {error && <span className="calendar-error-message">{error}</span>}
     </div>
   );

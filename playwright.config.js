@@ -11,6 +11,11 @@ export default defineConfig({
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
     headless: true,
+    locale: 'ja-JP',
+    timezoneId: 'Asia/Tokyo',
+    extraHTTPHeaders: {
+      'Accept-Language': 'ja-JP,ja;q=0.9,en;q=0.8'
+    },
   },
   projects: [
     {
@@ -18,6 +23,17 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'],
         headless: true,
+        launchOptions: {
+          args: [
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--font-render-hinting=none',
+            '--disable-font-subpixel-positioning',
+            '--disable-gpu-sandbox',
+            '--enable-font-antialiasing',
+            '--force-color-profile=srgb'
+          ]
+        }
       },
     },
   ],

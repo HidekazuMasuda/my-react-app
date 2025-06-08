@@ -33,12 +33,12 @@ const meta = {
 
 export default meta;
 
-const CalendarWithState = (props) => {
+const CalendarWithState = props => {
   const [value, setValue] = useState(props.value || '');
   return React.createElement(Calendar, {
     ...props,
     value: value,
-    onChange: (date) => {
+    onChange: date => {
       setValue(date);
       props.onChange && props.onChange(date);
     },
@@ -46,40 +46,45 @@ const CalendarWithState = (props) => {
 };
 
 export const Default = {
-  render: () => React.createElement(CalendarWithState, {
-    placeholder: '日付を選択してください',
-  }),
+  render: () =>
+    React.createElement(CalendarWithState, {
+      placeholder: '日付を選択してください',
+    }),
 };
 
 export const WithLabel = {
-  render: () => React.createElement(CalendarWithState, {
-    label: '期限日',
-    placeholder: '期限日を選択してください',
-  }),
+  render: () =>
+    React.createElement(CalendarWithState, {
+      label: '期限日',
+      placeholder: '期限日を選択してください',
+    }),
 };
 
 export const Required = {
-  render: () => React.createElement(CalendarWithState, {
-    label: '必須の日付',
-    required: true,
-    placeholder: '日付を選択してください',
-  }),
+  render: () =>
+    React.createElement(CalendarWithState, {
+      label: '必須の日付',
+      required: true,
+      placeholder: '日付を選択してください',
+    }),
 };
 
 export const WithError = {
-  render: () => React.createElement(CalendarWithState, {
-    label: '日付',
-    error: '過去の日付は選択できません',
-    placeholder: '日付を選択してください',
-  }),
+  render: () =>
+    React.createElement(CalendarWithState, {
+      label: '日付',
+      error: '過去の日付は選択できません',
+      placeholder: '日付を選択してください',
+    }),
 };
 
 export const Disabled = {
-  render: () => React.createElement(CalendarWithState, {
-    label: '無効な日付選択',
-    disabled: true,
-    value: '2025-12-25',
-  }),
+  render: () =>
+    React.createElement(CalendarWithState, {
+      label: '無効な日付選択',
+      disabled: true,
+      value: '2025-12-25',
+    }),
 };
 
 export const WithMinDate = {
@@ -87,7 +92,7 @@ export const WithMinDate = {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const tomorrowStr = tomorrow.toISOString().split('T')[0];
-    
+
     return React.createElement(CalendarWithState, {
       label: '明日以降の日付',
       minDate: tomorrowStr,
@@ -99,9 +104,13 @@ export const WithMinDate = {
 export const WithMaxDate = {
   render: () => {
     const today = new Date();
-    const oneMonthLater = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+    const oneMonthLater = new Date(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      today.getDate()
+    );
     const maxDateStr = oneMonthLater.toISOString().split('T')[0];
-    
+
     return React.createElement(CalendarWithState, {
       label: '1ヶ月以内の日付',
       maxDate: maxDateStr,
@@ -117,10 +126,10 @@ export const WithDateRange = {
     tomorrow.setDate(tomorrow.getDate() + 1);
     const nextWeek = new Date(today);
     nextWeek.setDate(nextWeek.getDate() + 7);
-    
+
     const minDateStr = tomorrow.toISOString().split('T')[0];
     const maxDateStr = nextWeek.toISOString().split('T')[0];
-    
+
     return React.createElement(CalendarWithState, {
       label: '明日から1週間以内',
       minDate: minDateStr,
@@ -135,7 +144,7 @@ export const PreSelected = {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const tomorrowStr = tomorrow.toISOString().split('T')[0];
-    
+
     return React.createElement(CalendarWithState, {
       label: '事前選択済み',
       value: tomorrowStr,
@@ -145,27 +154,35 @@ export const PreSelected = {
 };
 
 export const AllStates = {
-  render: () => React.createElement(
-    'div',
-    { style: { display: 'flex', flexDirection: 'column', gap: '2rem', minWidth: '300px' } },
-    React.createElement(CalendarWithState, {
-      label: 'デフォルト',
-      placeholder: '日付を選択してください',
-    }),
-    React.createElement(CalendarWithState, {
-      label: '必須項目',
-      required: true,
-      placeholder: '必須の日付',
-    }),
-    React.createElement(CalendarWithState, {
-      label: 'エラー状態',
-      error: '過去の日付は選択できません',
-      placeholder: '日付を選択してください',
-    }),
-    React.createElement(CalendarWithState, {
-      label: '無効状態',
-      disabled: true,
-      value: '2025-12-25',
-    })
-  ),
+  render: () =>
+    React.createElement(
+      'div',
+      {
+        style: {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2rem',
+          minWidth: '300px',
+        },
+      },
+      React.createElement(CalendarWithState, {
+        label: 'デフォルト',
+        placeholder: '日付を選択してください',
+      }),
+      React.createElement(CalendarWithState, {
+        label: '必須項目',
+        required: true,
+        placeholder: '必須の日付',
+      }),
+      React.createElement(CalendarWithState, {
+        label: 'エラー状態',
+        error: '過去の日付は選択できません',
+        placeholder: '日付を選択してください',
+      }),
+      React.createElement(CalendarWithState, {
+        label: '無効状態',
+        disabled: true,
+        value: '2025-12-25',
+      })
+    ),
 };

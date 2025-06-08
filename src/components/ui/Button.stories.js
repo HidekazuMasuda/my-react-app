@@ -91,7 +91,14 @@ export const AllSizes = {
   render: () => {
     return React.createElement(
       'div',
-      { style: { display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' } },
+      {
+        style: {
+          display: 'flex',
+          gap: '1rem',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+        },
+      },
       React.createElement(Button, { size: 'small' }, 'Small'),
       React.createElement(Button, { size: 'medium' }, 'Medium'),
       React.createElement(Button, { size: 'large' }, 'Large')

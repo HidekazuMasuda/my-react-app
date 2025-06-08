@@ -32,7 +32,8 @@ const Input: React.FC<InputProps> = ({
   autoFocus = false,
   id,
 }) => {
-  const inputClasses = `input ${error ? 'input--error' : ''} ${className}`.trim();
+  const inputClasses =
+    `input ${error ? 'input--error' : ''} ${className}`.trim();
 
   return (
     <div className="input-wrapper">
@@ -55,7 +56,9 @@ const Input: React.FC<InputProps> = ({
         onBlur={onBlur}
         autoFocus={autoFocus}
       />
-      {error && <span className="input-error-message error-message">{error}</span>}
+      {error && (
+        <span className="input-error-message error-message">{error}</span>
+      )}
     </div>
   );
 };
