@@ -39,3 +39,704 @@ Compiling...
 Compiled successfully!
 webpack compiled successfully
 No issues found.
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/App.tsx
+  Line 6:8:  'Fortune' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/App.tsx
+  Line 6:8:  'Fortune' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 99:6:  React Hook useEffect has a missing dependency: 'generateTodaysFortune'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 99:6:  React Hook useEffect has a missing dependency: 'generateTodaysFortune'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 99:6:  React Hook useEffect has a missing dependency: 'generateTodaysFortune'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 99:6:  React Hook useEffect has a missing dependency: 'generateTodaysFortune'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 12:76:   Replace `null` with `⏎····null⏎··`                                                                                                                                                prettier/prettier
+  Line 19:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 20:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 24:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 25:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 29:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 30:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 34:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 35:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 40:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 44:19:   Insert `⏎·······`                                                                                                                                                                 prettier/prettier
+  Line 45:23:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 46:6:    Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 51:10:   Replace `·'💎',·'🌟',·'🎯',·'🗝️',·'📿',·'🔮',` with `⏎····'💎',⏎····'🌟',⏎····'🎯',⏎····'🗝️',⏎····'📿',⏎····'🔮',⏎···`                                                          prettier/prettier
+  Line 52:10:   Replace `·'🎭',·'🎨',·'🎵',·'📚',·'✨',·'🌙',` with `⏎····'🎭',⏎····'🎨',⏎····'🎵',⏎····'📚',⏎····'✨',⏎····'🌙',⏎···`                                                              prettier/prettier
+  Line 53:10:   Replace `·'🐞',·'🌈',·'🎈',·'🎁',·'🏆',·'👑',` with `⏎····'🐞',⏎····'🌈',⏎····'🎈',⏎····'🎁',⏎····'🏆',⏎····'👑',⏎···`                                                            prettier/prettier
+  Line 54:10:   Replace `·'🪬',·'🌸',·'🌺',·'🍒',·'🍊',·'🥇',·'⭐'` with `⏎····'🪬',⏎····'🌸',⏎····'🌺',⏎····'🍒',⏎····'🍊',⏎····'🥇',⏎····'⭐',`                                                   prettier/prettier
+  Line 75:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 78:29:   Variable Assigned to Object Injection Sink                                                                                                                                        security/detect-object-injection
+  Line 79:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 81:35:   Replace `seededRandom(seed·+·1)·*·luckyItemEmojis.length` with `⏎······seededRandom(seed·+·1)·*·luckyItemEmojis.length⏎····`                                                      prettier/prettier
+  Line 82:33:   Replace `seededRandom(seed·+·2)·*·luckyItemEmojis.length);` with `⏎······seededRandom(seed·+·2)·*·luckyItemEmojis.length`                                                         prettier/prettier
+  Line 83:5:    Insert `);⏎`                                                                                                                                                                      prettier/prettier
+  Line 88:1:    Delete `····`                                                                                                                                                                     prettier/prettier
+  Line 92:20:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 92:49:   Generic Object Injection Sink                                                                                                                                                     security/detect-object-injection
+  Line 93:35:   Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 114:22:  Insert `,`                                                                                                                                                                        prettier/prettier
+  Line 136:23:  Replace `⏎················className="reveal-button"⏎················onClick={handleRevealFortune}⏎··············` with `className="reveal-button"·onClick={handleRevealFortune}`  prettier/prettier
+  Line 146:17:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 150:19:  Delete `·`                                                                                                                                                                        prettier/prettier
+  Line 167:56:  Replace `ラッキーアイテム·{index·+·1}` with `⏎······················ラッキーアイテム·{index·+·1}⏎····················`                                                                            prettier/prettier
+  Line 174:23:  Replace `⏎················className="reset-button"⏎················onClick={handleResetFortune}⏎··············` with `className="reset-button"·onClick={handleResetFortune}`      prettier/prettier
+  Line 186:12:  Replace `※·占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。` with `⏎··········※⏎··········占い結果は娯楽目的です。一日を楽しく過ごすきっかけとしてお楽しみください。⏎········`                                                    prettier/prettier
+  Line 192:24:  Insert `⏎`                                                                                                                                                                        prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+No issues found.
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 138:6:  React Hook useEffect has a missing dependency: 'generateTodaysFortune'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 107:9:  The 'generateTodaysFortune' function makes the dependencies of useEffect Hook (at line 138) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'generateTodaysFortune' in its own useCallback() Hook  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 1:38:    'useCallback' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 107:9:  The 'generateTodaysFortune' function makes the dependencies of useEffect Hook (at line 138) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'generateTodaysFortune' in its own useCallback() Hook  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 1:38:    'useCallback' is defined but never used     @typescript-eslint/no-unused-vars
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 18:9:  The 'fortunes' array makes the dependencies of useCallback Hook (at line 134) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'fortunes' in its own useMemo() Hook                react-hooks/exhaustive-deps
+  Line 57:9:  The 'luckyItemEmojis' array makes the dependencies of useCallback Hook (at line 134) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'luckyItemEmojis' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 113:29:  Variable Assigned to Object Injection Sink  security/detect-object-injection
+  Line 131:20:  Generic Object Injection Sink               security/detect-object-injection
+  Line 131:49:  Generic Object Injection Sink               security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 132:20:  Generic Object Injection Sink  security/detect-object-injection
+  Line 132:49:  Generic Object Injection Sink  security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 18:9:  The 'fortunes' array makes the dependencies of useCallback Hook (at line 135) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'fortunes' in its own useMemo() Hook                react-hooks/exhaustive-deps
+  Line 57:9:  The 'luckyItemEmojis' array makes the dependencies of useCallback Hook (at line 135) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'luckyItemEmojis' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 132:20:  Generic Object Injection Sink  security/detect-object-injection
+  Line 132:49:  Generic Object Injection Sink  security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 18:9:  The 'fortunes' array makes the dependencies of useCallback Hook (at line 136) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'fortunes' in its own useMemo() Hook                react-hooks/exhaustive-deps
+  Line 57:9:  The 'luckyItemEmojis' array makes the dependencies of useCallback Hook (at line 136) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'luckyItemEmojis' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 18:9:  The 'fortunes' array makes the dependencies of useCallback Hook (at line 136) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'fortunes' in its own useMemo() Hook                react-hooks/exhaustive-deps
+  Line 57:9:  The 'luckyItemEmojis' array makes the dependencies of useCallback Hook (at line 136) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'luckyItemEmojis' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 12:7:   'FORTUNES' is assigned a value but never used           @typescript-eslint/no-unused-vars
+  Line 44:17:  Delete `⏎·····`                                         prettier/prettier
+  Line 51:7:   'LUCKY_ITEM_EMOJIS' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/pages/Fortune.tsx
+  Line 136:6:  React Hook useCallback has unnecessary dependencies: 'fortunes' and 'luckyItemEmojis'. Either exclude them or remove the dependency array. Outer scope values like 'fortunes' aren't valid dependencies because mutating them doesn't re-render the component  react-hooks/exhaustive-deps
+
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 12:7:   'FORTUNES' is assigned a value but never used           @typescript-eslint/no-unused-vars
+  Line 44:17:  Delete `⏎·····`                                         prettier/prettier
+  Line 51:7:   'LUCKY_ITEM_EMOJIS' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+ERROR in src/pages/Fortune.tsx:112:58
+TS2552: Cannot find name 'fortunes'. Did you mean 'FORTUNES'?
+    110 |
+    111 |     // 運勢を選択
+  > 112 |     const fortuneIndex = Math.floor(seededRandom(seed) * fortunes.length);
+        |                                                          ^^^^^^^^
+    113 |     // eslint-disable-next-line security/detect-object-injection
+    114 |     const selectedFortune = fortunes[fortuneIndex];
+    115 |
+
+ERROR in src/pages/Fortune.tsx:114:29
+TS2552: Cannot find name 'fortunes'. Did you mean 'FORTUNES'?
+    112 |     const fortuneIndex = Math.floor(seededRandom(seed) * fortunes.length);
+    113 |     // eslint-disable-next-line security/detect-object-injection
+  > 114 |     const selectedFortune = fortunes[fortuneIndex];
+        |                             ^^^^^^^^
+    115 |
+    116 |     // ラッキーアイテムを2つ選択
+    117 |     const item1Index = Math.floor(
+
+ERROR in src/pages/Fortune.tsx:118:32
+TS2552: Cannot find name 'luckyItemEmojis'. Did you mean 'LUCKY_ITEM_EMOJIS'?
+    116 |     // ラッキーアイテムを2つ選択
+    117 |     const item1Index = Math.floor(
+  > 118 |       seededRandom(seed + 1) * luckyItemEmojis.length
+        |                                ^^^^^^^^^^^^^^^
+    119 |     );
+    120 |     let item2Index = Math.floor(
+    121 |       seededRandom(seed + 2) * luckyItemEmojis.length
+
+ERROR in src/pages/Fortune.tsx:121:32
+TS2552: Cannot find name 'luckyItemEmojis'. Did you mean 'LUCKY_ITEM_EMOJIS'?
+    119 |     );
+    120 |     let item2Index = Math.floor(
+  > 121 |       seededRandom(seed + 2) * luckyItemEmojis.length
+        |                                ^^^^^^^^^^^^^^^
+    122 |     );
+    123 |
+    124 |     // 同じアイテムが選ばれないようにする
+
+ERROR in src/pages/Fortune.tsx:126:39
+TS2552: Cannot find name 'luckyItemEmojis'. Did you mean 'LUCKY_ITEM_EMOJIS'?
+    124 |     // 同じアイテムが選ばれないようにする
+    125 |     while (item2Index === item1Index) {
+  > 126 |       item2Index = (item2Index + 1) % luckyItemEmojis.length;
+        |                                       ^^^^^^^^^^^^^^^
+    127 |     }
+    128 |
+    129 |     return {
+
+ERROR in src/pages/Fortune.tsx:133:20
+TS2552: Cannot find name 'luckyItemEmojis'. Did you mean 'LUCKY_ITEM_EMOJIS'?
+    131 |       description: selectedFortune.description,
+    132 |       // eslint-disable-next-line security/detect-object-injection
+  > 133 |       luckyItems: [luckyItemEmojis[item1Index], luckyItemEmojis[item2Index]],
+        |                    ^^^^^^^^^^^^^^^
+    134 |       color: selectedFortune.color,
+    135 |     };
+    136 |   }, [fortunes, luckyItemEmojis]);
+
+ERROR in src/pages/Fortune.tsx:133:49
+TS2552: Cannot find name 'luckyItemEmojis'. Did you mean 'LUCKY_ITEM_EMOJIS'?
+    131 |       description: selectedFortune.description,
+    132 |       // eslint-disable-next-line security/detect-object-injection
+  > 133 |       luckyItems: [luckyItemEmojis[item1Index], luckyItemEmojis[item2Index]],
+        |                                                 ^^^^^^^^^^^^^^^
+    134 |       color: selectedFortune.color,
+    135 |     };
+    136 |   }, [fortunes, luckyItemEmojis]);
+
+ERROR in src/pages/Fortune.tsx:136:7
+TS2552: Cannot find name 'fortunes'. Did you mean 'FORTUNES'?
+    134 |       color: selectedFortune.color,
+    135 |     };
+  > 136 |   }, [fortunes, luckyItemEmojis]);
+        |       ^^^^^^^^
+    137 |
+    138 |   useEffect(() => {
+    139 |     setTodaysFortune(generateTodaysFortune());
+
+ERROR in src/pages/Fortune.tsx:136:17
+TS2552: Cannot find name 'luckyItemEmojis'. Did you mean 'LUCKY_ITEM_EMOJIS'?
+    134 |       color: selectedFortune.color,
+    135 |     };
+  > 136 |   }, [fortunes, luckyItemEmojis]);
+        |                 ^^^^^^^^^^^^^^^
+    137 |
+    138 |   useEffect(() => {
+    139 |     setTodaysFortune(generateTodaysFortune());
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 44:17:   Delete `⏎·····`                                                                                                                                                      prettier/prettier
+  Line 133:20:  Replace `LUCKY_ITEM_EMOJIS[item1Index],·LUCKY_ITEM_EMOJIS[item2Index]` with `⏎········LUCKY_ITEM_EMOJIS[item1Index],⏎········LUCKY_ITEM_EMOJIS[item2Index],⏎······`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 44:17:   Delete `⏎·····`                                                                                                                                                      prettier/prettier
+  Line 133:20:  Replace `LUCKY_ITEM_EMOJIS[item1Index],·LUCKY_ITEM_EMOJIS[item2Index]` with `⏎········LUCKY_ITEM_EMOJIS[item1Index],⏎········LUCKY_ITEM_EMOJIS[item2Index],⏎······`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 133:9:  Generic Object Injection Sink  security/detect-object-injection
+  Line 134:9:  Generic Object Injection Sink  security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 133:9:  Generic Object Injection Sink  security/detect-object-injection
+  Line 134:9:  Generic Object Injection Sink  security/detect-object-injection
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 132:20:  Replace `LUCKY_ITEM_EMOJIS[item1Index],·LUCKY_ITEM_EMOJIS[item2Index]` with `⏎········LUCKY_ITEM_EMOJIS[item1Index],⏎········LUCKY_ITEM_EMOJIS[item2Index],⏎······`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 132:20:  Replace `LUCKY_ITEM_EMOJIS[item1Index],·LUCKY_ITEM_EMOJIS[item2Index]` with `⏎········LUCKY_ITEM_EMOJIS[item1Index],⏎········LUCKY_ITEM_EMOJIS[item2Index],⏎······`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+No issues found.
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Fortune.tsx
+  Line 133:20:  Replace `LUCKY_ITEM_EMOJIS[item1Index],·LUCKY_ITEM_EMOJIS[item2Index]` with `⏎········LUCKY_ITEM_EMOJIS[item1Index],⏎········LUCKY_ITEM_EMOJIS[item2Index],⏎······`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/pages/Fortune.tsx
+  Line 133:20:  Replace `LUCKY_ITEM_EMOJIS[item1Index],·LUCKY_ITEM_EMOJIS[item2Index]` with `⏎········LUCKY_ITEM_EMOJIS[item1Index],⏎········LUCKY_ITEM_EMOJIS[item2Index],⏎······`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+No issues found.
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+No issues found.

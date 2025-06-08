@@ -19,6 +19,12 @@ const Navbar: React.FC = () => {
             >
               TODOアプリ
             </Link>
+            <Link
+              to="/fortune"
+              className={location.pathname === '/fortune' ? 'active' : ''}
+            >
+              🔮 占い
+            </Link>
           </div>
         </div>
       </div>
